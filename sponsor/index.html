@@ -406,9 +406,14 @@
   @media (max-width: 600px) {
     .example-table thead { display: none; }
     .example-table, .example-table tbody, .example-table tr, .example-table td { display: block; width: 100%; }
+    /* 表を block にすると caption だけが table-caption のまま残り、
+       中身の幅に縮んで縦に細長くなる。caption も block にして全幅に戻す */
+    .example-table { display: flex; flex-direction: column; }
+    .example-table caption { display: block; width: 100%; order: 2; padding: 10px 16px 12px; border-top: 1px solid var(--border); }
     .example-table tr { border-bottom: 1px solid var(--border); padding: 8px 0; }
     .example-table td { border-bottom: none; padding: 4px 16px; }
-    .example-table td.price::before { content: attr(data-label); font-weight: 700; color: var(--text-sub); margin-right: 8px; }
+    .example-table td.price::before { content: "販売価格"; font-weight: 700; color: var(--text-sub); margin-right: 8px; }
+    html[lang="en"] .example-table td.price::before { content: "Price"; }
   }
 
   /* ===== メリット ===== */
@@ -523,6 +528,7 @@
   .letter dd li { padding-left: 1em; position: relative; }
   .letter dd li::before { content: "・"; position: absolute; left: 0; }
   .letter .hl { color: var(--primary); font-weight: 800; }
+  .letter a { overflow-wrap: anywhere; }
   .download-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 22px; }
   .btn-download {
     display: inline-block;
@@ -919,47 +925,47 @@
         <tr>
           <td><span class="kind" data-ja>日本食レストランのお食事券</span><span class="kind" data-en>Japanese restaurant voucher</span>
               <span class="sub" data-ja>$50分 × 10枚</span><span class="sub" data-en>$50 × 10</span></td>
-          <td class="price" data-label="Price">$40</td>
+          <td class="price">$40</td>
         </tr>
         <tr>
           <td><span class="kind" data-ja>ラーメン店のお食事券</span><span class="kind" data-en>Ramen shop voucher</span>
               <span class="sub" data-ja>$25分 × 10枚</span><span class="sub" data-en>$25 × 10</span></td>
-          <td class="price" data-label="Price">$20</td>
+          <td class="price">$20</td>
         </tr>
         <tr>
           <td><span class="kind" data-ja>お好み焼き店の10%割引券</span><span class="kind" data-en>Okonomiyaki restaurant 10%-off coupon</span>
               <span class="sub" data-ja>500枚</span><span class="sub" data-en>500 coupons</span></td>
-          <td class="price" data-label="Price"><span data-ja>4枚1組 $5</span><span data-en>$5 per set of 4</span></td>
+          <td class="price"><span data-ja>4枚1組 $5</span><span data-en>$5 per set of 4</span></td>
         </tr>
         <tr>
           <td><span class="kind" data-ja>ヘアサロンのカット20%OFF券</span><span class="kind" data-en>Hair salon 20%-off haircut coupon</span>
               <span class="sub" data-ja>3枚</span><span class="sub" data-en>3 coupons</span></td>
-          <td class="price" data-label="Price">$5</td>
+          <td class="price">$5</td>
         </tr>
         <tr>
           <td><span class="kind" data-ja>ギフトカード（Amazon・AMEX・航空会社など）</span><span class="kind" data-en>Gift cards (Amazon, AMEX, airline, etc.)</span>
               <span class="sub" data-ja>$50〜$100分</span><span class="sub" data-en>$50–$100 each</span></td>
-          <td class="price" data-label="Price">$40〜$80</td>
+          <td class="price">$40〜$80</td>
         </tr>
         <tr>
           <td><span class="kind" data-ja>サロンの施術ギフトカード</span><span class="kind" data-en>Beauty salon treatment gift card</span>
               <span class="sub" data-ja>$50分 × 5枚</span><span class="sub" data-en>$50 × 5</span></td>
-          <td class="price" data-label="Price">$40</td>
+          <td class="price">$40</td>
         </tr>
         <tr>
           <td><span class="kind" data-ja>ダンス教室の1か月体験券</span><span class="kind" data-en>Dance studio one-month trial</span>
               <span class="sub" data-ja>5枚（新規の方限定）</span><span class="sub" data-en>5 certificates (new students)</span></td>
-          <td class="price" data-label="Price">$5</td>
+          <td class="price">$5</td>
         </tr>
         <tr>
           <td><span class="kind" data-ja>スーパーの食品詰め合わせ</span><span class="kind" data-en>Grocery gift set</span>
               <span class="sub" data-ja>$30相当 × 20点</span><span class="sub" data-en>$30 value × 20</span></td>
-          <td class="price" data-label="Price">$20</td>
+          <td class="price">$20</td>
         </tr>
         <tr>
           <td><span class="kind" data-ja>クリニックの人間ドック券</span><span class="kind" data-en>Clinic health checkup package</span>
               <span class="sub" data-ja>$990相当</span><span class="sub" data-en>$990 value</span></td>
-          <td class="price" data-label="Price"><span data-ja>オークション $100〜</span><span data-en>Auction from $100</span></td>
+          <td class="price"><span data-ja>オークション $100〜</span><span data-en>Auction from $100</span></td>
         </tr>
       </tbody>
     </table>
